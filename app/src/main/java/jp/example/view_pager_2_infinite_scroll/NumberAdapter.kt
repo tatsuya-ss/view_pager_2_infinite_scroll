@@ -12,9 +12,6 @@ class NumberAdapter(
     private val originalList: List<SampleData>
 ) : RecyclerView.Adapter<NumberAdapter.NumberViewHolder>() {
 
-    private val newList: List<SampleData> =
-        listOf(originalList.last()) + originalList + listOf(originalList.first())
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NumberViewHolder {
         val layoutInflater = LayoutInflater.from(context)
         val binding = AdapterNumberBinding.inflate(layoutInflater, parent, false)

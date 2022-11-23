@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val sampleList: List<SampleData> = listOf(
-        SampleData(9, "#00FFFF"),
+        SampleData(9, "#00FFFF"),  // フェイク用
         SampleData(1, "#91C555"),
         SampleData(2, "#F48E37"),
         SampleData(3, "#FFEB3B"),
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         SampleData(7, "#7B68EE"),
         SampleData(8, "#7FFFD4"),
         SampleData(9, "#00FFFF"),
-        SampleData(1, "#91C555"),
+        SampleData(1, "#91C555"),  // フェイク用
         )
 
     override fun onCreate(savedInstanceState: Bundle?) {
