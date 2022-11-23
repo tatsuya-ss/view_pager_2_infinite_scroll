@@ -3,11 +3,13 @@ package jp.example.view_pager_2_infinite_scroll
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import jp.example.view_pager_2_infinite_scroll.databinding.ActivityMainBinding
+import java.io.Serializable
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : FragmentActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -23,16 +25,17 @@ class MainActivity : AppCompatActivity() {
         SampleData(8, "#7FFFD4"),
         SampleData(9, "#00FFFF"),
         SampleData(1, "#91C555"),  // フェイク用
-        )
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding.infiniteViewPager.adapter = NumberAdapter(this, sampleList)
+        binding.infiniteViewPager.adapter = NumberAdapterForFragment(this, sampleList)
         binding.infiniteViewPager.currentItem = 1
-        binding.infiniteViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        binding.infiniteViewPager.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageScrollStateChanged(state: Int) {
                 super.onPageScrollStateChanged(state)
                 if (state == ViewPager2.SCROLL_STATE_IDLE) {
@@ -57,4 +60,4 @@ class MainActivity : AppCompatActivity() {
 data class SampleData(
     val number: Int,
     val color: String,
-)
+) : Serializable
